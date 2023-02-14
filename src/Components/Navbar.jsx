@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import logoo from '../img/logo2.png';
 import img from '../img/img.png';
 import { Link, NavLink } from 'react-router-dom';
@@ -12,6 +12,10 @@ function Navbar(props) {
     const openRegistr = useRef();
     const [count, setCount] = useState(1);
     const ull = useRef();
+
+    useEffect(() => {
+        return;
+    }, [count])
 
     const bars = ()=> {
         ull.current.style.display= 'block';
@@ -127,11 +131,11 @@ function Navbar(props) {
                                                         </div>
                                                         <div className="k-footer">
                                                             <div className="four">
-                                                                <div className='minus' onClick={() => setCount(count - 1)}>-</div>
-                                                                <p className='count'>{count}</p>
-                                                                <div className='plus' onClick={() => setCount(count + 1)}>+</div>
+                                                                <div className='minus' onClick={() => order.stock >= 0 && setCount(order.stock--)}>-</div>
+                                                                <p className='count'>{order.stock >= 0 ? order.stock : 0}</p>
+                                                                <div className='plus' onClick={() => setCount(order.stock++)}>+</div>
                                                             </div>
-                                                            <p className='price'>{order.price} ₽</p>
+                                                            <p className='price'>{order.stock > 1 ? order.price * order.stock : order.price} ₽</p>
                                                         </div>
                                                     </div>
                                                 </div>
