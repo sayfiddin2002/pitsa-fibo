@@ -140,7 +140,7 @@ function Navbar(props) {
                                     })
 
                                     : <div className='no_date'>
-                                        <p>No results</p>
+                                        {/* <p>No results</p> */}
                                     </div>
                                 }
 
