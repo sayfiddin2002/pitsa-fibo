@@ -54,6 +54,8 @@ function Navbar(props) {
         openRegistr.current.style.display = 'block'
     }
 
+    let getTotalPrice = [];
+
     return (
         <div className='big'>
             <div className='container'>
@@ -120,6 +122,7 @@ function Navbar(props) {
                                         return (
                                             <div key={order.index}>
                                                 <hr />
+                                                {getTotalPrice.push(props.orders[index])}
                                                 <div className="korzina" >
                                                     <img src={order.img} alt="Error" />
                                                     <div className="tittle">
@@ -152,7 +155,7 @@ function Navbar(props) {
                                     ? <div className="kor-foter">
                                         <div className="foter-header">
                                             <p>Сумма заказа</p>
-                                            <p>{props.count} ₽</p>
+                                            <p>{getTotalPrice.reduce((acc, item) => acc + (item.price * item.stock), 0)} ₽</p>
                                         </div>
                                         <div className="kor_foter">
                                             <NavLink to={'/card'}>
